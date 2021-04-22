@@ -14,11 +14,13 @@
                     marker.addEventListener('markerFound', function () {
                         this.toggle = true;
                         this.vid.play();
+                        this.sound.playSound();
                     }.bind(this));
 
                     marker.addEventListener('markerLost', function () {
                         this.toggle = false;
                         this.vid.pause();
+                        this.sound.pauseSound();
                     }.bind(this));
                 },
             });
@@ -48,7 +50,6 @@
                     playsinline
                 ></video>
                 <audio id="sound" src="assets/audio.mp3" preload="auto"></audio>
-                
             </a-assets>
             <a-marker
                 type="pattern"
@@ -72,10 +73,10 @@
                     class="clickable"
                     gesture-handler
                 ></a-video>
-                <audio id="sound" src="assets/audio.mp3" preload="auto"></audio>
             </a-marker>
-<a-sound src="assets/audio.mp3"><a-sound>
+
             <a-entity camera></a-entity>
+            <a-entity sound="src: #sound"></a-entity>
         </a-scene>
     </body>
 </html>
